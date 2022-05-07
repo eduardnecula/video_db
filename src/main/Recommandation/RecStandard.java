@@ -6,7 +6,7 @@ import main.Actions;
 import java.util.ArrayList;
 
 /**
- * Clasa utila pentru o recomdare pentru un utilizator standard
+ * Useful class for a recommendation for a standard user
  */
 public class RecStandard {
     private final Input input;

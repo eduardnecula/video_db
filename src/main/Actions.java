@@ -12,16 +12,16 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Aceasta este clasa principala ce va apela restul de clase.
- * In functie de tipul comenzi, se va crea un obiect pentru fiecare actiune
- * Iar apoi fiecare obiect va crea alte obiecte in functie de tipul comenzii
+ * This is the main class that will appeal to the rest of the class.
+ * Depending on the type of command, an object will be created for each action
+ * And then each object will create other objects depending on the type of order
  */
 public class Actions {
     private Input input;
 
     /**
-     * Aici incepe tot algoritmu
-     * Se decide ce fel de actiune se va executa
+     * This is where the whole algorithm begins
+     * It is decided what kind of action will be performed
      * @param arrayResult pentru a pune in el obiecte pt afisare
      */
     public void runActions(final JSONArray arrayResult) {

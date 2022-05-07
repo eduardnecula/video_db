@@ -21,9 +21,9 @@ public class RecommendationMain {
     }
 
     /**
-     * Principala functie, care stabileste ce tip de recomandare are comanda,
-     * apoi apeleaza cate o functie pentru fiecare tip in parte, iar aceste
-     * functii vor crea obiecte ce se vor punt intr-un JSOn array
+     * The main function, which determines what type of recommendation the order has,
+     * then calls a function for each type, and these
+     * functions will create objects that will point to a JSOn array
      * @param indexAction id actiune
      * @param arrayResult pentru afisare format JSON
      */
@@ -96,7 +96,7 @@ public class RecommendationMain {
     }
 
     /**
-     * @return intoarce rating-ul
+     * @return return rating
      */
     public Map<String, String> getRating() {
         Map<String, String> map = new HashMap<>();
@@ -116,7 +116,7 @@ public class RecommendationMain {
     }
 
     /**
-     * Functie ce se ocupa de categoria recommendation popular
+     * Function that deals with the popular recommendation category
      * @param indexAction id actiune
      * @param arrayResult pentru a pune obiecte in formal JSONArray
      */
@@ -137,7 +137,7 @@ public class RecommendationMain {
     }
 
     /**
-     * Functia sorteaza o lista primita
+     * The function sorts a received list
      * @param arrayList  lista de sortat
      * @return lista sortata
      */
@@ -179,15 +179,15 @@ public class RecommendationMain {
                         input.getCommands().get(i).getUsername();
                 if (userFromCommands != null
                         && user.compareTo(userFromCommands) == 0) {
-                    //  acum am acces doar la actiunile care au legatura cu
-                    //  user-ul pe care il doreste problema
+                    // now I only have access to actions related to
+                    // the user the problem wants
                     String movieWatchedCommand =
                             input.getCommands().get(i).getTitle();
-                    //  iterez prin lista de filme ale userului si caut ce
-                    //  filme nu am vazut
+                    //  I wander through the user's movie list and look for what
+                    // I haven't seen any movies
                     for (int j = 0; j < nrUsers; j++) {
-                        //  iterez ca sa caut
-                        //  filmele nevazute de user
+                        //  I'm looking for it
+                        // movies not seen by the user
                         String cautaUser =
                                 input.getUsers().get(j).getUsername();
                         Map<String, Integer> movieWatchedUserHist =
@@ -201,10 +201,10 @@ public class RecommendationMain {
                                             && value != null
                                             && name.compareTo(movieWatchedCommand)
                                             != 0) {
-                                        //  daca gasesc un film la user in
-                                        //  comanda
-                                        //  care este diferit de ce am eu
-                                        //  iau grade-ul si il pun intr-un max
+                                        //  if i find a movie in user in
+                                        // command
+                                        // which is different from what I have
+                                        // take the grade and put it in a max
                                         if (value < max) {
                                             max = value;
                                             movieFinal = movieWatchedCommand;
@@ -225,10 +225,10 @@ public class RecommendationMain {
     }
 
     /**
-     *Caut un film in lista altor useri
-     * Un film pe care nu l-am mai vazut
+     * I'm looking for a movie in the list of other users
+     * A movie I've never seen before
      * @param indexAction
-     * @param arrayResult pentru a pune obiecte in formal JSONArray
+     * @param arrayResult to formally place JSONArray objects
      */
     public void favoriteRecommandation(final int indexAction,
                                        final JSONArray arrayResult) {
@@ -237,7 +237,7 @@ public class RecommendationMain {
         if (username == null) {
             return;
         }
-        //  trec prin toti userii
+        //  go through all users
         int nrUseri = input.getUsers().size();
         //  nr de filme favorite
         ArrayList<String> listFavorite = null;
@@ -246,14 +246,14 @@ public class RecommendationMain {
             if (user == null) {
                 continue;
             }
-            //  daca gasesc user-ul, ma uit pe lista lui de history
+            //  if I find the user, I look at his history list
             if (user.compareTo(username) == 0) {
                 listFavorite = input.getUsers().get(i).getFavoriteMovies();
             }
         }
-        // compar fiecare element din lista cu lista de favorite ale altora
+        // they go through all the users, except the one who gives the order
         Map<String, Integer> map = new HashMap<>();
-        //  trec prin toti userii, mai putin cel care da comanda
+        //  they go through all the users, except the one who gives the order
         for (int i = 0; i < nrUseri; i++) {
             String user = input.getUsers().get(i).getUsername();
 
@@ -261,7 +261,7 @@ public class RecommendationMain {
                 continue;
             }
             if (user.compareTo(username) != 0) {
-                //  ma uit in lista lui de favorite
+                //  I look at his list of favorites
                 ArrayList<String> listaUserFav =
                         input.getUsers().get(i).getFavoriteMovies();
                 if (listaUserFav == null) {
@@ -271,10 +271,10 @@ public class RecommendationMain {
                     if (movie == null) {
                         continue;
                     }
-                    //  daca gasesc un film care sa nu se afle
-                    //  in lista mea curenta
-                    // trebuie o conditie
-                    // ca acest film sa nu fie in istoric deja
+                    // if I find a movie that isn't there
+                    // in my current list
+                    // you need a condition
+                    // that this film is not already in history
 
                     assert listFavorite != null;
                     if (!listFavorite.contains(movie)) {
@@ -290,7 +290,7 @@ public class RecommendationMain {
             }
 
         }
-        //  compar ce am in map cu lista de history a utilizatorului
+        //  compare what I have in the map with the user's history list
         for (int i = 0; i < nrUseri; i++) {
             String user = input.getUsers().get(i).getUsername();
             if (user == null) {
@@ -325,10 +325,10 @@ public class RecommendationMain {
         }
     }
     /**
-     * Functia cauta dupa genul actiunii si intoarce o lista cu rezultatul
-     * cautarii
-     * @param actionId id actiune
-     * @param arrayResult pentru a pune obiecte in formal JSONArray
+     * The function searches for the action type and returns a list of results
+     * search
+     * @param actionId action id
+     * @param arrayResultJSONArray
      */
     public ArrayList<String> search(final int actionId,
                                     final JSONArray arrayResult) {
@@ -355,20 +355,20 @@ public class RecommendationMain {
     }
 
     /**
-     * caut genul filmului pentru recomandate
+     * I'm looking for the kind of movie for recommended
      * @param actionId id actiune
      * @param arrayResult pentru a pune obiecte in formal JSONArray
      */
     void searchGenre(final String genre, final int actionId,
                      final JSONArray arrayResult) {
-        //  am nevoie de lista history a lui user
+        //  i need user history list
         ArrayList<String> listaDorita = new ArrayList<>();
         String username = input.getCommands().get(actionId).getUsername();
         if (username == null) {
             return;
         }
 
-        //  caut user-ul, pentru istoricul sau
+        //  I'm looking for the user, for his history
         int nrUseri = input.getUsers().size();
         Map<String, Integer> history = new HashMap<>();
         for (int i = 0; i < nrUseri; i++) {
@@ -382,7 +382,7 @@ public class RecommendationMain {
         }
         ArrayList<String> list = new ArrayList<>(history.keySet());
 
-        //  trebuie sa ma uit prin lista de filme pt genul dorit
+        //  I have to look through the list of movies for the desired genre
         int nrFilme = input.getMovies().size();
         for (int i = 0; i < nrFilme; i++) {
             ArrayList<String> genreMovies =
@@ -390,15 +390,15 @@ public class RecommendationMain {
             if (genreMovies == null) {
                 continue;
             }
-            //  daca gasesc genul dorit
+            //  if I find the kind I want
             if (genreMovies.contains(genre)) {
-                //  voi compara filmul de aici
+                //  I'll compare the movie here
                 String movie = input.getMovies().get(i).getTitle();
                 if (movie == null) {
                     continue;
                 }
-                //  acest film trebuie sa il compar cu cel din
-                //  lista de history a lui user
+                // I have to compare this movie with the one in
+                // user's history list
                 if (!list.contains(movie)) {
                     listaDorita.add(movie);
                 }
@@ -416,8 +416,8 @@ public class RecommendationMain {
     }
     /**
      *
-     * @param userName nume utiliztor
-     * @param genre genul filmului
+     * @param userName user name
+     * @param genre movie genre
      * @return
      */
     public ArrayList<String> genreActionAdventure(final String userName,
@@ -426,15 +426,15 @@ public class RecommendationMain {
         int nrSerials = input.getSerials().size();
         for (int i = 0; i < nrSerials; i++) {
             List<String> listGenres = input.getSerials().get(i).getGenres();
-            //  pentru fiecare gen, vad daca este ca al meu
+            //  for each genre, I see if it's like mine
             if (checkFindGendre(listGenres, genre)) {
-                //  daca exista genul
+                //  if there is such a thing
                 ArrayList<String> listaFilme =
                         getListSerialsWatched(userName);
                 String nameSeries = input.getSerials().get(i).getTitle();
                 if (listaFilme != null && nameSeries != null
                         && checkIfSerialExist(nameSeries, listaFilme)) {
-                    //  daca serialul meu nu se afla in lista de filme vazute
+                    //  if my series is not in the list of watched movies
                     listaFilmeIntoarse.add(nameSeries);
                 }
             }
@@ -442,10 +442,10 @@ public class RecommendationMain {
         return listaFilmeIntoarse;
     }
     /**
-     * in acesta lista caut sa vad daca genre exista
-     * @param list lista primita
-     * @param genre caut genul in lista
-     * @return intorc true sau false daca gasesc
+     * in this list I look to see if the genre exists
+     * @param list lista received
+     * @param genre serch this genre in the list
+     * @return return true or false if I find it
      */
     public boolean checkFindGendre(final List<String> list,
                                    final String genre) {
@@ -457,14 +457,14 @@ public class RecommendationMain {
         return false;
     }
     /**
-     * Caut sa vad daca un serial dintr-o lista exista
+     * I'm looking to see if a series on a list exists
      * @param title nume film
      * @param serials lista seriale
      * @return intorc true sau false daca un serial exista
      */
     public boolean checkIfSerialExist(final String title,
                                       final List<String> serials) {
-        //  daca serialul exista in lista de seriale vazute
+        //  if the series exists in the list of viewed series
         for (String serial : serials) {
             if (title.compareTo(serial) == 0) {
                 return false;
@@ -476,11 +476,11 @@ public class RecommendationMain {
      *
      * @param user nume utilizator
      * @return
-     * functia intoarce lista de seriale din comanzi
-     * lista imi trebuie doar pentru un user specific
+     * the function returns the list of serial commands
+     * I only need the list for a specific user
      */
     public ArrayList<String> getListSerialsWatched(final String user) {
-        //  ma plimb prin toata lista de actiuni
+        //  I walk through the whole list of actions
         ArrayList<String> serialeDinComanda = new ArrayList<>();
 
         for (int i = 0; i < getNrActions(); i++) {

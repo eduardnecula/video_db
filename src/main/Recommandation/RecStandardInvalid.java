@@ -3,8 +3,8 @@ package main.Recommandation;
 import fileio.Input;
 
 /**
- * Clasa folosita pentru un mesaj de eroare atunci cand o recomandare
- * populara nu poate sa fie aplicata din diverse motive
+ * The class used for an error message when a recommendation
+ * popular cannot be applied for various reasons
  */
 public class RecStandardInvalid {
     private final int index;

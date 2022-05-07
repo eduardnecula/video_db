@@ -3,15 +3,15 @@ package main.Recommandation;
 import fileio.Input;
 
 /**
- * Clasa este folosita pentru cand comanda favorite recommendation nu poate
- * fi aplicata
+ * The class is used for when the favorite recommendation command cannot
+ * be applied
  */
 public class RecError {
     private int actionId;
     /**
      *
-     * @param input de la fisier
-     * @param indexAction id actiune
+     * @param input from file
+     * @param indexAction action id
      */
     public RecError(final Input input, final int indexAction) {
         this.actionId = input.getCommands().get(indexAction).getActionId();
@@ -19,14 +19,14 @@ public class RecError {
 
     /**
      *
-     * @return id actiune
+     * @return action id
      */
     public int getActionId() {
         return actionId;
     }
     /**
      *
-     * @param actionId seteaza id actiune
+     * @param actionId set action id
      */
     public void setActionId(final int actionId) {
         this.actionId = actionId;
@@ -34,7 +34,7 @@ public class RecError {
 
     /**
      *
-     * @return pentru JSON array la afisare
+     * @return for JSON array to display
      */
     @Override
     public String toString() {

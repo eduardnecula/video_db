@@ -4,7 +4,7 @@ import fileio.Input;
 import java.util.ArrayList;
 
 /**
- * aceasta clasa intoarce un search recommendation, in format JSON
+ * this class returns a search recommendation, in JSON format
  */
 public class RecSearch {
     private int actionId;
