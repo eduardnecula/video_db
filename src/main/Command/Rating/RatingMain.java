@@ -4,8 +4,8 @@ import fileio.Input;
 import org.json.simple.JSONArray;
 
 /**
- * clasa verifica daca poate sa aplice rating, iar in functie de raspuns
- * va crea obiecte necesare pe care le va pune in JSON ARRAY
+ * the class checks if it can apply rating, and depending on the answer
+ * will create necessary objects that it will put in JSON ARRAY
  */
 public class RatingMain {
 
@@ -15,9 +15,9 @@ public class RatingMain {
 
     /**
      *
-     * @param input de la fisier
-     * @param indexAction id actiune
-     * @param arrayResult JSON array unde pun rezultatele
+     * @param input from file
+     * @param indexAction action id
+     * @param arrayResult JSON array where I put the results
      */
     public RatingMain(final Input input, final int indexAction,
                       final JSONArray arrayResult) {
@@ -27,9 +27,9 @@ public class RatingMain {
     }
 
     /**
-     * functia care verifica daca poate aplica rating
-     * apoi creaza obiecte in functie de modul in care poate
-     * sa aplice rating sau nu
+     * the function that checks if it can apply rating
+     * then create objects as you can
+     * apply rating or not
      */
     public void rating() {
         String user = input.getCommands().get(indexAction).getUsername();
@@ -54,10 +54,10 @@ public class RatingMain {
     }
 
     /**
-     * de cate ori se repeta user-ul si movie-ul in lista de actiuni
-     * @param user nume user
-     * @param movie nume film
-     * @param actionIdAvoid id actiune de ocolit
+     * how many times the user and movie are repeated in the action list
+     * @param user user name
+     * @param movie movie name
+     * @param actionIdAvoid action id to avoid
      * @return
      */
     public int checkIfRated(final String user, final String movie,
@@ -84,7 +84,7 @@ public class RatingMain {
 
     /**
      *
-     * @return intorc input-ul
+     * @return input
      */
     public Input getInput() {
         return input;
@@ -92,7 +92,7 @@ public class RatingMain {
 
     /**
      * s
-     * @param input setez input-ul
+     * @param input input
      */
     public void setInput(final Input input) {
         this.input = input;

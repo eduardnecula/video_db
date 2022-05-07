@@ -13,27 +13,27 @@ import java.util.ArrayList;
 import java.util.Map;
 
 /**
- * Aceasta clasa este Clasa principala care se ocupa de analizarea tipului
- * de comanda main. In functie de ce fel de comanda primeste, se duce cu un
- * switch pe fiecare ramura.
- * Fiecare ramura apeleaza o functie, iar fiecare functie va crea obiecte pe
- * care le va pune intr-un JSON array
+ * This class is the main class that deals with type analysis
+ * hand command. Depending on what kind of order he receives, he goes with a
+ * switch on each branch.
+ * Each branch calls a function, and each function will create objects on
+ * which will put them in a JSON array
  */
 public class CommandMain {
     private Input input;
 
     /**
-     * @param input input primit de la fisierul de intrare
+     * @param input input received from the input file
      */
     public CommandMain(final Input input) {
         this.input = input;
     }
 
     /**
-     * Functia verifica tipul comenzii, si apeleaza functiile necesare pe
-     * fiecare ramura
-     * @param indexAction id actiune
-     * @param arrayResult JSON array in care voi pune obiectele ce se vor afisa
+     * The function checks the type of command, and calls the required functions on
+     * each branch
+     * @param indexAction action id
+     * @param arrayResult JSON array in which I will put the objects that will be displayed
      */
     public void command(final int indexAction, final JSONArray arrayResult) {
         String type = input.getCommands().get(indexAction).getType();
@@ -57,11 +57,11 @@ public class CommandMain {
     }
 
     /**
-     * Pentru comand favorite, in functie daca comanda reuseste sau nu,
-     * voi crea obiecte specifice pe care le voi pune in JSON array pentru
-     * afisare in fisier
-     * @param indexAction  id actiune
-     * @param arrayResult JSON array pentru obiecte
+     * For favorite order, depending on whether the order is successful or not,
+     * I will create specific objects that I will put in the JSON array for
+     * display in file
+     * @param indexAction action id
+     * @param arrayResult JSON array for objects
      */
     public void favorite(final int indexAction, final JSONArray arrayResult) {
         int id = input.getCommands().get(indexAction).getActionId();
@@ -76,7 +76,7 @@ public class CommandMain {
             return;
         }
 
-        //  ma plimb prin useri
+        //  I walk through the users
         int nrUseri = input.getUsers().size();
         for (int i = 0; i < nrUseri; i++) {
             String userName = input.getUsers().get(i).getUsername();
@@ -84,14 +84,14 @@ public class CommandMain {
                 continue;
             }
             if (userName.compareTo(user) == 0) {
-                //  daca gasesc user-ul dorit
-                //  ma uit daca are filmul in lista de vazute
+                //  if I find the user I want
+                // I see if he has the movie in the list of views
                 Map<String, Integer> history = input.getUsers().get(i).getHistory();
                 if (history.containsKey(title)) {
-                    //  adaug in lista de favorite
+                    //  I add to the favorites list
                     ArrayList<String> list;
                     list = input.getUsers().get(i).getFavoriteMovies();
-                    //  daca in lista de favorite se afla deja filmul
+                    //  if the movie is already in the favorites list
                     if (list.contains(title)) {
                         FavDuplicate df = new FavDuplicate(title, id);
                         arrayResult.add(df);
@@ -102,7 +102,7 @@ public class CommandMain {
                         arrayResult.add(favorite);
                     }
                 } else {
-                    //  daca nu gasesc filmul
+                    //  If I don't find the movie
                     FavNo nf = new FavNo(title, id);
                     arrayResult.add(nf);
                 }
@@ -111,10 +111,10 @@ public class CommandMain {
     }
 
     /**
-     * Pentru command view, Voi crea un obiect pe care il voi afisa in
+     * For command view, I will create an object that I will display in
      * JSON array
-     * @param indexAction id actiune
-     * @param arrayResult JSON array in care pun obiecte
+     * @param indexAction action id
+     * @param arrayResult JSON array in which I put the objects
      */
     public void view(final int indexAction, final JSONArray arrayResult) {
         View view = new View(input, getUserAction(indexAction),
@@ -128,8 +128,8 @@ public class CommandMain {
 
     /**
      *
-     * @param index id actiune
-     * @return numele utilizatorului
+     * @param index action id
+     * @return user name
      */
     public String getUserAction(final int index) {
         return input.getCommands().get(index).getUsername();
@@ -137,8 +137,8 @@ public class CommandMain {
 
     /**
      *
-     * @param index id actiune
-     * @return titlul filmului
+     * @param index action id
+     * @return movie title
      */
     public String getTitle(final int index) {
         return input.getCommands().get(index).getTitle();

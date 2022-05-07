@@ -3,8 +3,8 @@ package main.Command.Rating;
 import fileio.Input;
 
 /**
- * Clasa este utila atunci cand primesc comanda de rating pentru un film
- * pe care nu l-am vazut, caz in care afisez un mesaj de eroare
+ * The class is useful when I receive the rating order for a movie
+ * which I did not see, in which case I display an error message
  */
 public class RatStandardNotSeen {
     private final Input input;
@@ -13,9 +13,9 @@ public class RatStandardNotSeen {
 
     /**
      *
-     * @param input de la fisier
-     * @param index index actiune
-     * @param movie film de adaugat
+     * @param input from file
+     * @param index id action
+     * @param movie movie to add
      */
     public RatStandardNotSeen(final Input input, final int index,
                               final String movie) {
@@ -34,7 +34,7 @@ public class RatStandardNotSeen {
 
     /**
      *
-     * @return intorc id actiune
+     * @return action id
      */
     public int getIndex() {
         return index;
@@ -42,7 +42,7 @@ public class RatStandardNotSeen {
 
     /**
      *
-     * @return se va afisa in JSON array
+     * @return it will be displayed in JSON array
      */
     @Override
     public String toString() {

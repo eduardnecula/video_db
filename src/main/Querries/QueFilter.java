@@ -3,7 +3,7 @@ package main.Querries;
 import java.util.List;
 
 /**
- * Cu aceasta clasa afisez rezultatele interogarii unui querry in format JSON
+ * With this class I display the results of querying a querry in JSON format
  */
 public class QueFilter {
     private final int index;
@@ -11,8 +11,8 @@ public class QueFilter {
 
     /**
      * Constructor
-     * @param index id actiune
-     * @param list lista de afisat pentru JSON array
+     * @param index action id
+     * @param list list to display for JSON array
      */
     public QueFilter(final int index,
                      final List<String> list) {
@@ -22,7 +22,7 @@ public class QueFilter {
 
     /**
      *
-     * @return pentru JSON arrays
+     * @return for JSON arrays
      */
     @Override
     public String toString() {

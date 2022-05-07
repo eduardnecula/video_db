@@ -3,8 +3,8 @@ package main.Command.Rating;
 import fileio.Input;
 
 /**
- * Clas este utila atunci cand incerc sa aplic rating pentru un film la care
- * am dat deja acest lucru. Se va afisa un mesaj de eroare corespunzator
+ * The class is useful when trying to rate a movie
+ * I have already given this. An appropriate error message will be displayed
  */
 public class RatAlreadyAplied {
     private final String movieToAdd;
@@ -12,9 +12,9 @@ public class RatAlreadyAplied {
 
     /**
      *
-     * @param input de la fisier
-     * @param indexAction id-ul actiunii
-     * @param movieToAdd filmul de adaugat
+     * @param input from file
+     * @param indexAction action id
+     * @param movieToAdd movie to add
      */
     public RatAlreadyAplied(final Input input, final int indexAction,
                             final String movieToAdd) {
@@ -24,7 +24,7 @@ public class RatAlreadyAplied {
 
     /**
      *
-     * @return id-ul actiunii curente
+     * @return current action id
      */
     public int getActionId() {
         return actionId;
@@ -32,7 +32,7 @@ public class RatAlreadyAplied {
 
     /**
      *
-     * @param actionId setez id-ul actiunii curente
+     * @param actionId set current action id
      */
     public void setActionId(final int actionId) {
         this.actionId = actionId;
@@ -40,7 +40,7 @@ public class RatAlreadyAplied {
 
     /**
      *
-     * @return pentru JSON arrray
+     * @return for JSON arrray
      */
     @Override
     public String toString() {

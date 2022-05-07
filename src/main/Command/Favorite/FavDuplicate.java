@@ -1,8 +1,8 @@
 package main.Command.Favorite;
 
 /**
- * Atunci cand primesc comanda favorite, dar am vazut deja filmul
- * voi afisa un mesaj de eroare corespunzator
+ * When I receive my favorite order, but I've already seen the movie
+ * I will display an appropriate error message
  */
 public class FavDuplicate {
 
@@ -10,10 +10,10 @@ public class FavDuplicate {
     private final int actionId;
 
     /**
-     * favorite primeste input, titlul pe care sa-l adauge
-     * si filmul de adugat in lista de filme
-     * @param movieToAdd filmul de adaugat
-     * @param actionId id-ul actiunii
+     * favorites receive input, the title to add
+     * and the movie to add to the movie list
+     * @param movieToAdd movie to add
+     * @param actionId action id
      */
     public FavDuplicate(final String movieToAdd, final int actionId) {
         this.movieToAdd = movieToAdd;
@@ -22,7 +22,7 @@ public class FavDuplicate {
 
     /**
      *
-     * @return id-ul actiunii curente
+     * @return current action id
      */
     public int getActionId() {
         return actionId;
@@ -30,7 +30,7 @@ public class FavDuplicate {
 
     /**
      *
-     * @return mesaj de afisat in JSON array
+     * @return message to displat in JSON array
      */
     @Override
     public String toString() {
