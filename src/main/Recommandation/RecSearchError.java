@@ -3,8 +3,8 @@ package main.Recommandation;
 import fileio.Input;
 
 /**
- * pentru cand recomandarea de search nu poate sa fie aplicata din diverse
- * motive
+ * for when the search recommendation cannot be applied from various
+ * reasons
  */
 public class RecSearchError {
     private int actionId;

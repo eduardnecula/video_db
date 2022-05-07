@@ -74,10 +74,10 @@ public final class Main {
         Writer fileWriter = new Writer(filePath2);
         JSONArray arrayResult = new JSONArray();
 
-        //  aici incepe programul
-        //  Se va apela Clasa Actions, ce va crea cate un obiect pentru
-        // fiecare actiune, iar fiecare obiect va face alte obiecte
-        // in functie de tipul comenzii
+        // this is where the program begins
+        // It will be called the Actions Class, which will create an object for
+        // each action, and each object will make other objects
+        // depending on the type of order
         Actions actions = new Actions(input);
         actions.runActions(arrayResult);
         fileWriter.closeJSON(arrayResult);

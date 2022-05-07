@@ -3,7 +3,7 @@ package main.Recommandation;
 import fileio.Input;
 
 /**
- * Aceasta clasa este folosita pentru intoarce o recomandare populara
+ * This class is used to return a popular recommendation
  */
 public class RecPopular {
     private final int index;

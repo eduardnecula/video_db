@@ -3,7 +3,7 @@ package main.Recommandation;
 import fileio.Input;
 
 /**
- * Voi afisa cu aceasta clasa o recomandare de film
+ * I will post a movie recommendation with this class
  */
 public class RecFavorite {
     private final Input input;
