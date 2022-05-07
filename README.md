@@ -1,1 +1,1 @@
-# This project represent a simmulation of a video site that fmovies or netflix that let's you search or receive recommandations.
+# This project represent a simmulation of a video site like fmovies or netflix that let's you search or receive recommandations.
