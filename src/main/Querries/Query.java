@@ -4,9 +4,9 @@ import fileio.Input;
 import java.util.ArrayList;
 
 /**
- * Aceasta clasa seamana cu QuerryFilter, doar ca seteaza id-ul actiunii,
- * cealalta clasa primea direct id-ul actiunii ca parametru, functionalitatea
- * este la fel. Se va afisa raspunul querry si o lista ce se va pune in JSON
+ * This class looks like QuerryFilter, only it sets the action id,
+ * the other class received directly the id of the action as a parameter, the functionality
+ * It's the same. The querry answer and a JSON list will be displayed
  */
 public class Query {
     private int actionId;
@@ -14,9 +14,9 @@ public class Query {
 
     /**
      *
-     * @param input primit de la fisier
-     * @param actionId id actiune
-     * @param arrayList lista de afisat
+     * @param input from file
+     * @param actionId action id
+     * @param arrayList list to display
      */
     Query(final Input input, final int actionId,
           final ArrayList<String> arrayList) {
@@ -26,14 +26,14 @@ public class Query {
 
     /**
      *
-     * @return id actiune
+     * @return action id
      */
     public int getActionId() {
         return actionId;
     }
     /**
      *
-     * @param actionId setare id actiune
+     * @param actionId set action id
      */
     public void setActionId(final int actionId) {
         this.actionId = actionId;
@@ -41,7 +41,7 @@ public class Query {
 
     /**
      *
-     * @return se va afisa in format JSON array
+     * @return display in format JSON array
      */
     @Override
     public String toString() {

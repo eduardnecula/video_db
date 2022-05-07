@@ -3,9 +3,9 @@ package main.Recommandation;
 import fileio.Input;
 
 /**
- * Clasa este folosita pentru a intoarce un obiect ce va fi folosit in
- * comanda standard recommendation best unseen. Cu alte cuvinte intoarce cea
- * mai buna recomandare de film pe care un user nu l-a vazut.
+ * The class is used to return an object that will be used in
+ * command standard recommendation best unseen. In other words, return that
+ * best movie recommendation that a user has not seen.
  */
 public class RecBestUnseen {
     private Input input;
@@ -15,10 +15,10 @@ public class RecBestUnseen {
 
     /**
      *
-     * @param input primit din fisier
-     * @param movie filmul
-     * @param indexAction id-ul actiunii
-     * @param user numele utilizatorului
+     * @param input from file
+     * @param movie the movie
+     * @param indexAction action id
+     * @param user user name
      */
     RecBestUnseen(final Input input, final String movie, final int indexAction,
                   final String user) {
@@ -30,56 +30,56 @@ public class RecBestUnseen {
 
     /**
      *
-     * @return returneaza input-ul
+     * @return input
      */
     public Input getInput() {
         return input;
     }
     /**
      *
-     * @param input seteaza input
+     * @param input set input
      */
     public void setInput(final Input input) {
         this.input = input;
     }
     /**
      *
-     * @return intoarce film
+     * @return movie
      */
     public String getMovie() {
         return movie;
     }
     /**
      *
-     * @param movie seteaza film
+     * @param movie set movie
      */
     public void setMovie(final String movie) {
         this.movie = movie;
     }
     /**
      *
-     * @return intoarce id actiune
+     * @return action id
      */
     public int getActionId() {
         return actionId;
     }
     /**
      *
-     * @param actionId seteaza id actiune
+     * @param actionId set action id
      */
     public void setActionId(final int actionId) {
         this.actionId = actionId;
     }
     /**
      *
-     * @return intoarce user
+     * @return return user
      */
     public String getUser() {
         return user;
     }
     /**
      *
-     * @param user seteaza user
+     * @param user set user
      */
     public void setUser(final String user) {
         this.user = user;
@@ -87,7 +87,7 @@ public class RecBestUnseen {
 
     /**
      *
-     * @return verifica daca este valid obiectul
+     * @return check if the object is valid
      */
     public boolean checkValid() {
         if (movie == null || user == null) {
@@ -97,7 +97,7 @@ public class RecBestUnseen {
     }
     /**
      *
-     * @return pentru a fi folost in JSON array, la afisares
+     * @return for JSON ARRAY
      */
     @Override
     public String toString() {

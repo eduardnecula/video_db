@@ -1,9 +1,9 @@
 package main.Command.Favorite;
 
 /**
- *  clasa se ocupa cu cautarea prin history
- *  daca nu gasesc filmul in history nu pot sa il adaug la favorite
- *  si afisez un mesaj corespunzator in format JSON
+ *  the class deals with history search
+ * if I can't find the movie in history I can't add it to my favorites
+ * and display a corresponding message in JSON format
  */
 public class FavNo {
 
@@ -12,8 +12,8 @@ public class FavNo {
 
     /**
      *
-     * @param movieToAdd film de adaugat
-     * @param actionId id-ul actiunii curente
+     * @param movieToAdd movie to add
+     * @param actionId current action id
      */
     public FavNo(final String movieToAdd, final int actionId) {
         this.movieToAdd = movieToAdd;
@@ -22,14 +22,14 @@ public class FavNo {
 
     /**
      *
-     * @return id-ul actiunii curente
+     * @return current action id
      */
     public int getActionId() {
         return actionId;
     }
     /**
      *
-     * @return mesaj de afisat pentru JSON array
+     * @return message to displat in JSON array
      */
     @Override
     public String toString() {

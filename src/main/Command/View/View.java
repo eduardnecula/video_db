@@ -4,8 +4,8 @@ import fileio.Input;
 import java.util.Map;
 
 /**
- * Clasa aceasta este pentru cand primesc comanda view la un film.
- * Voi afisa un mesaj de succes corespunzator.
+ * This class is for when I receive the view command for a movie.
+ * I will display a corresponding success message.
  */
 public class View {
     private final String nameUser;
@@ -17,10 +17,10 @@ public class View {
     private Map<String, Integer> history;
     /**
      *
-     * @param input de la fisier
-     * @param nameUser nume utilizator
-     * @param movieToAdd film de adaugat
-     * @param actionId id actiune
+     * @param input from file
+     * @param nameUser user name
+     * @param movieToAdd movie to add
+     * @param actionId action id
      */
     public View(final Input input, final String nameUser, final String movieToAdd,
                 final int actionId) {
@@ -32,15 +32,15 @@ public class View {
     }
 
     /**
-     * setez nr de view-uri pe care un user, le are la un anumit film
+     * I set the number of views a user has for a particular movie
      */
     public void setNrView() {
-        // trebuie sa caut filmul in lista user-ului
+        // I have to search for the movie in the user list
         int nrusers = input.getUsers().size();
         for (int i = 0; i < nrusers; i++) {
             String name = input.getUsers().get(i).getUsername();
             if (name.compareTo(nameUser) == 0) {
-                //  daca gasesc user-ul, caut in lista lui de histori
+                //  if I find the user, I search his list of histories
                 history = input.getUsers().get(i).getHistory();
                 if (history.containsKey(movieToAdd)) {
                     for (int j = 0; j < history.size(); j++) {
@@ -55,7 +55,7 @@ public class View {
 
     /**
      *
-     * @return verific sa am grija ca aceste valori sa nu fie null
+     * @return I check to make sure that these values ​​are not null
      */
     public boolean checkView() {
         if (nameUser == null || movieToAdd == null) {
@@ -66,7 +66,7 @@ public class View {
 
     /**
      *
-     * @param actionId id actiune
+     * @param actionId action id
      */
     public void setActionId(final int actionId) {
         this.actionId = actionId;
@@ -74,7 +74,7 @@ public class View {
 
     /**
      *
-     * @return input primit
+     * @return input received
      */
     public Input getInput() {
         return input;
@@ -82,14 +82,14 @@ public class View {
 
     /**
      *
-     * @param input input fisier
+     * @param input input from the file
      */
     public void setInput(final Input input) {
         this.input = input;
     }
 
     /**
-     * setare id actiune curenta
+     * set current action id
      */
     public void setActionId() {
         this.actionId = input.getCommands().get(actionId).getActionId();
@@ -97,7 +97,7 @@ public class View {
 
     /**
      *
-     * @return id actiune curenta
+     * @return current action id
      */
     public int getActionId() {
         return actionId;
@@ -105,7 +105,7 @@ public class View {
 
     /**
      *
-     * @return istoricul unui utilizator
+     * @return history of a user
      */
     public Map<String, Integer> getHistory() {
         return history;
@@ -113,7 +113,7 @@ public class View {
 
     /**
      *
-     * @param history setare istoric utilizator
+     * @param history set history user
      */
     public void setHistory(final Map<String, Integer> history) {
         this.history = history;
@@ -121,7 +121,7 @@ public class View {
 
     /**
      *
-     * @return pentru JSON array
+     * @return for JSON array
      */
     @Override
     public String toString() {

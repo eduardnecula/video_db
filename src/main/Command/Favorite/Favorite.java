@@ -3,7 +3,7 @@ package main.Command.Favorite;
 import fileio.Input;
 
 /**
- * aceasta clasa adauga in lista de favorite a user-ului un video
+ * this class adds a video to the user's favorites list
  */
 public class Favorite {
     private final Input input;
@@ -12,10 +12,10 @@ public class Favorite {
     private final int actionId;
     /**
      *
-     * @param input de la fisier
-     * @param nameUser numele utilizatorului
-     * @param movieToAdd filmul de adaugat
-     * @param actionId id-ul actiunii
+     * @param input from the file
+     * @param nameUser user name
+     * @param movieToAdd movie to add
+     * @param actionId action id
      */
     public Favorite(final Input input, final String nameUser, final String movieToAdd,
                     final int actionId) {
@@ -26,20 +26,20 @@ public class Favorite {
     }
     /**
      *
-     * @return intorc input-ul din fiser
+     * @return return input from file
      */
     public Input getInput() {
         return input;
     }
     /**
      *
-     * @return intorc id-ul actiunii curente
+     * @return return current action id
      */
     public int getActionId() {
         return actionId;
     }
     /**
-     * Mesaj de afisat pentru Json Array
+     * message to displat in JSON array
      * @return
      */
     @Override

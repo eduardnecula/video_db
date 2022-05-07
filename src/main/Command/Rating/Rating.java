@@ -6,9 +6,9 @@ import main.Actions;
 import java.util.ArrayList;
 
 /**
- * Clasa este utila pentru afisarea unui mesaj de succes atunci cand dau
- * rating unui film pe care l-am vazut, si este o comanda unica,
- * adica nu am mai dat comanda rating pe acelasi film
+ *The class is useful for displaying a successful message when giving
+ * rating of a movie I saw, and it's a unique order,
+ * I mean I didn't order the same movie
  */
 public class Rating {
     private final Input input;
@@ -20,10 +20,10 @@ public class Rating {
 
     /**
      *
-     * @param input de la fisier
-     * @param nameUser numele utilizatorului
-     * @param movieToAdd filmul de adaugat
-     * @param actionId id-ul actiunii
+     * @param input from file
+     * @param nameUser user name
+     * @param movieToAdd movie to add
+     * @param actionId action id
      */
     public Rating(final Input input, final String nameUser, final String movieToAdd,
                   final int actionId) {
@@ -34,7 +34,7 @@ public class Rating {
     }
     /**
      *
-     * @return verifica daca rating-ul este null
+     * @return verify that the rating is null
      */
     public boolean chechRating() {
         if (input == null || nameUser == null || movieToAdd == null) {
@@ -44,7 +44,7 @@ public class Rating {
     }
     /**
      *
-     * @return verifica daca am mai vazut filmul
+     * @return verify if I have seen the movie
      */
     public boolean checkSeen() {
         Actions actions = new Actions(input);
@@ -62,7 +62,7 @@ public class Rating {
     }
 
     /**
-     * functia intoarce grade
+     *  return grade
      */
     public void applyRating() {
         this.grade = input.getCommands().get(actionId).getGrade();
@@ -71,7 +71,7 @@ public class Rating {
 
     /**
      *
-     * @param actionId setez id-ul actiunii curente
+     * @param actionId set action id
      */
     public void setActionId(final int actionId) {
         this.actionId = actionId;
@@ -79,7 +79,7 @@ public class Rating {
 
     /**
      *
-     * @return input-ul
+     * @return input
      */
     public Input getInput() {
         return input;
@@ -87,7 +87,7 @@ public class Rating {
 
     /**
      *
-     * @return id-ul actiunii
+     * @return action id
      */
     public int getActionId() {
         return actionId;
@@ -95,7 +95,7 @@ public class Rating {
 
     /**
      *
-     * @return intorc nota primita
+     * @return the grade received
      */
     public double getGrade() {
         return grade;
@@ -103,7 +103,7 @@ public class Rating {
 
     /**
      *
-     * @param grade setez o valoare
+     * @param grade set a value
      */
     public void setGrade(final double grade) {
         this.grade = grade;
@@ -111,7 +111,7 @@ public class Rating {
 
     /**
      *
-     * @return pentru Json array
+     * @return for Json array
      */
     @Override
     public String toString() {

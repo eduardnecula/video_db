@@ -4,8 +4,8 @@ import fileio.Input;
 import java.util.Map;
 
 /**
- * Clasa este folosita pentru a da un mesaj de eroare atunci cand
- * nu pot sa intorc un querry pentru un actor
+ * The class is used to give an error message when
+ * I can't return a querry for an actor
  */
 public class QueActors {
     private final Input input;
@@ -14,9 +14,9 @@ public class QueActors {
 
     /**
      * Constructor
-     * @param input de la fisit
-     * @param index id actiune
-     * @param list lista cu actori
+     * @param input from the file
+     * @param index action id
+     * @param list list of actors
      */
     public QueActors(final Input input, final int index, final Map<String,
             Double> list) {
@@ -27,7 +27,7 @@ public class QueActors {
 
     /**
      *
-     * @return intoarce inputul pe care il am
+     * @return input
      */
     public Input getInput() {
         return input;
@@ -35,7 +35,7 @@ public class QueActors {
 
     /**
      *
-     * @return intoarce id-ul actiunii curente
+     * @return action id
      */
     public int getIndex() {
         return index;
@@ -43,7 +43,7 @@ public class QueActors {
 
     /**
      *
-     * @return intoarce lista de actori
+     * @return list actors
      */
     public Map<String, Double> getList() {
         return list;
@@ -51,7 +51,7 @@ public class QueActors {
 
     /**
      *
-     * @return pentru JSON array
+     * @return for JSON array
      */
     @Override
     public String toString() {

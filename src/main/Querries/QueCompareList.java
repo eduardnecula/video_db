@@ -1,9 +1,9 @@
 package main.Querries;
 
 /**
- * Clasa este folosita pentru a-mi sorta map-urile in care am nume de diverse
- * lucuri si valori pentru ele. In functie de aceste valori voi sorta ori
- * crescator, ori lexic
+ * The class is used to sort the maps in which I have various names
+ * things and values ​​for them. Depending on these values ​​I will sort times
+ * ascending, or lexical
  */
 public class QueCompareList implements Comparable<QueCompareList> {
     private final String key;
@@ -11,8 +11,8 @@ public class QueCompareList implements Comparable<QueCompareList> {
 
     /**
      * Constructor
-     * @param key poate sa fie numele unui actor
-     * @param value poate sa fie cate premii detine
+     * @param key it could be the name of an actor
+     * @param value it may be how many prizes he holds
      */
     public QueCompareList(final String key, final int value) {
         this.key = key;
@@ -20,7 +20,7 @@ public class QueCompareList implements Comparable<QueCompareList> {
     }
 
     /**
-     * intoarce un nume de exemplu
+     * retorn name
      * @return
      */
     public String getName() {
@@ -28,7 +28,7 @@ public class QueCompareList implements Comparable<QueCompareList> {
     }
 
     /**
-     * intoarce numarul de premii de exemplu
+     * return number of awards
      * @return
      */
     public int getId() {
@@ -36,10 +36,10 @@ public class QueCompareList implements Comparable<QueCompareList> {
     }
 
     /**
-     * functie de comparare ori dupa numarul de premii, ori lexic
-     * @param key1 numele1
-     * @param key2 numele2
-     * @return intoarce  ori o valoare poz, ori neg ori 0 pentru egalitate
+     * depending on the comparison either by the number of prizes or by lexicon
+     * @param key1 name1
+     * @param key2 name2
+     * @return return or a pozitive value, or negative or 0 for equality
      * de nume
      */
     public static int compareString(final String key1, final String key2) {
@@ -59,16 +59,16 @@ public class QueCompareList implements Comparable<QueCompareList> {
     }
 
     /**
-     * Functia de comparare a fost modificata pentru a-mi sorta map-urile
-     * pentru functiile de querry
-     * @param o un obiect pe care il voi compara cu this
-     * @return intoarce ori o val poz, ori neg ori 0 la egalitate de nume si
-     * valori
+     * The comparison function has been modified to sort my maps
+     * for querry functions
+     * @param o an object that I will compare with this
+     * @return returns either a positive value, or a negative value, or 0 to equal names and
+     * values
      */
     @Override
     public int compareTo(final QueCompareList o) {
         if (value == o.value) {
-            // daca au acelasi nume trebuie sa compar lexic
+            // if they have the same name I have to compare them lexically
             return compareString(key, o.key);
         }
         return this.value - o.value;

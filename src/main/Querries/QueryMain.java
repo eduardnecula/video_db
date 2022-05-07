@@ -16,16 +16,16 @@ public class QueryMain {
     private Input input;
     /**
      *
-     * @param input seteaza input-ul
+     * @param input set input
      */
     public QueryMain(final Input input) {
         this.input = input;
     }
 
     /**
-     * Functia principala care stabileste cu ce fel de querry lucram
-     * @param indexAction id actiune
-     * @param arrayResult JSON array in care se vor pune obiectele
+     * The main function that determines what kind of querry we work with
+     * @param indexAction action id
+     * @param arrayResult JSON array in which I put the objects
      */
     public void query(final int indexAction, final JSONArray arrayResult) {
         String objectType =
@@ -51,9 +51,9 @@ public class QueryMain {
     }
 
     /**
-     * Functia care se ocupa de comanda query movies
-     * @param indexAction id actiune
-     * @param arrayResult JSON array in care se vor pune obiectele
+     * The function that handles the query movies command
+     * @param indexAction action id
+     * @param arrayResult JSON array in which the objects are put
      */
     public void queryMovies(final int indexAction,
                             final JSONArray arrayResult) {
@@ -80,25 +80,25 @@ public class QueryMain {
     }
     /**
      *
-     * @return intoarce nr de useri
+     * @return number of users
      */
     public int getNrUsers() {
         return  input.getUsers().size();
     }
 
     /**
-     * Functia se ocupa de comanda query actors
-     * In functie de tipul comenzii query actors, se foloseste un switch,
-     * in care se va apela o functie corespunzatoare. Scopul final va fi
-     * ca fiecare functie sa creeze un obiect pe care sa il puna in JSON
+     * The function deals with command query actors
+     * Depending on the type of query actors command, a switch is used,
+     * in which a corresponding function will be called. The ultimate goal will be
+     * for each function to create an object to put in JSON
      * array
-     * @param indexAction id actiune
-     * @param arrayResult JSON array in care se vor pune obiectele
+     * @param indexAction action id
+     * @param arrayResult JSON array in which the objects are put
      */
     public void queryActors(final int indexAction,
                             final JSONArray arrayResult) {
 
-        // pentru fiecare actor
+        // for each actor
         String criteria = input.getCommands().get(indexAction).getCriteria();
         String sortType = input.getCommands().get(indexAction).getSortType();
         if (criteria == null) {
@@ -119,10 +119,10 @@ public class QueryMain {
     }
 
     /**
-     * Functia ce se ocupa de comanda quert shows. Aceasta apeleaza alte functii
-     * pentru a aplica functii de filtrare pentru elemente de tip show
-     * @param indexAction id actiune
-     * @param arrayResult JSON array in care se vor pune obiectele
+     * The quert shows command function. This calls for other functions
+     * to apply filtering functions to show items
+     * @param indexAction action id
+     * @param arrayResult JSON array in which the objects are put
      */
     public void queryShows(final int indexAction, final JSONArray arrayResult) {
         ArrayList<String> seriesToRecommend =
@@ -142,8 +142,8 @@ public class QueryMain {
 
     /**
      *
-     * @param indexAction id actiune
-     * @param arrayResult JSON array in care se vor pune obiectele
+     * @param indexAction action id
+     * @param arrayResult JSON array in which the objects are put
      */
     public void queryUsers(final int indexAction,
                            final JSONArray arrayResult) {
@@ -157,10 +157,10 @@ public class QueryMain {
     }
 
     /**
-     * Functia ce sorteaza in functie de premiile pe care le are un actor
-     * @param indexAction id actiune
-     * @param arrayResult JSON arrat in care voi pune obiectele
-     * @param sortType tipu sortarii, crescatoare, descrescatoare
+     * The function that sorts according to the awards that an actor has
+     * @param indexAction action id
+     * @param arrayResult in which the objects are put
+     * @param sortType sorting type, descending, ascending
      */
     public void criteriaAwards(final int indexAction,
                                           final JSONArray arrayResult,
@@ -183,8 +183,8 @@ public class QueryMain {
         int contor = 0;
         int sumPremii = 0;
         if (awards != null) {
-            // trebuie sa verific la fiecare actor
-            // daca are toate aceste award-uri
+            // I have to check on every actor
+            // if he has all these awards
             int nrActors = input.getActors().size();
             for (int i = 0; i < nrActors; i++) {
                 String nameActor = input.getActors().get(i).getName();
@@ -192,7 +192,7 @@ public class QueryMain {
                     continue;
                 }
 
-                // ma uit in lista lui de premii
+                // I look at his list of awards
                 Map<ActorsAwards, Integer> awardsActor =
                         input.getActors().get(i).getAwards();
 
@@ -213,8 +213,8 @@ public class QueryMain {
 
                 if (contor == awards.size()) {
                     list.add(nameActor);
-                    //  trebuie sa adaug suma tuturo premiilor pe care
-                    //  acest actor le are
+                    //  I have to add the sum of all the prizes that
+                    // this actor has them
                     listValues.add(sumPremii);
                 }
                 contor = 0;
@@ -222,9 +222,9 @@ public class QueryMain {
             }
         }
 
-        //  acum in map-ul awardsList am puse <NumeActor, CatePremiiAre>
-        //  voi face atatea obiecte Compare list pentru fiecare valoare
-        //  si o voi sorta
+        //  now in the awardsList map I put <ActorName, How ManyAwardsAre>
+        // I will make so many Compare list objects for each value
+        // I'll sort it out
         int nrObiecte = list.size();
         QueCompareList[] compareLists = new QueCompareList[nrObiecte];
         Map<String, QueCompareList> newMap = new HashMap<>();
@@ -250,10 +250,10 @@ public class QueryMain {
 
     }
     /**
-     * Functia ce filtreaza in functie de descrierea pe care o are o comanda
+     * The filtering function according to the description of an order
      * query
-     * @param indexAction id actiune
-     * @param arrayResult JSON array in care se vor pune obiectele
+     * @param indexAction action id
+     * @param arrayResult JSON array
      */
     public void criteriaFilterDescription(final int indexAction,
                                        final JSONArray arrayResult,
@@ -264,7 +264,7 @@ public class QueryMain {
         List<List<String>> filters =
                 input.getCommands().get(indexAction).getFilters();
 
-        // trec prin toti actorii
+        // I go through all the actors
         int nrActori = input.getActors().size();
         List<String> words = filters.get(2);
         for (int i = 0; i < nrActori; i++) {
@@ -277,12 +277,12 @@ public class QueryMain {
             if (descriereActor == null) {
                 continue;
             }
-            //  caut in aceasta descriere cele 2 cuvinte
+            //  I'm looking for the 2 words in this description
             if (words == null) {
                 continue;
             }
             for (String word : words) {
-                //  trec prin fiecare cuvant acum
+                //  I'm going through every word now
                 if (word == null) {
                     continue;
                 }
@@ -308,21 +308,21 @@ public class QueryMain {
     }
 
     /**
-     * Functia de sortare a actorilor in functie de media premiilor lor
-     * @param indexAction id actiune
-     * @param arrayResult JSON array in care voi pune obiectele
+     * The sorting function of the actors according to the average of their awards
+     * @param indexAction action id
+     * @param arrayResult JSON array
      */
     public void criteriaActorsAverage(final int indexAction,
                                        final JSONArray arrayResult) {
         int number = input.getCommands().get(indexAction).getNumber();
         int nrActors = input.getActors().size();
-        //  trec prin fiecare actor
+        //  I go through every actor
         Map<String, Double> averageList = new HashMap<>();
         for (int i = 0; i < nrActors; i++) {
             String actor = input.getActors().get(i).getName();
-            //  primesc media pt un actor
+            //  I receive the average for each actor
             double medieActor = averageActor(actor);
-            //  fac un map intre nume si medie
+            //  I do a map between name and average
             averageList.put(actor, medieActor);
         }
 
@@ -332,14 +332,14 @@ public class QueryMain {
     }
 
     /**
-     * Functia calculeaza media premiilor pentru un actor
-     * @param name nume actor
-     * @return intoarce media premiilor unui actor
+     * The function calculates the average awards for an actor
+     * @param name actor name
+     * @return returns the average of an actor's awards
      */
     public double averageActor(final String name) {
         double medie = 0;
         int nrFilme = 0;
-        //  trec prin toate task-urile
+        //  I get through all the tasks
         int nrTask = input.getCommands().size();
         for (int i = 0; i < nrTask; i++) {
             String actionType = input.getCommands().get(i).getActionType();
@@ -348,17 +348,17 @@ public class QueryMain {
             if (actionType != null && rating != null) {
                 if (actionType.compareTo(Constants.COMMAND) == 0) {
                     if (rating.compareTo(Constants.RATING) == 0) {
-                        //  acum ca sunt pe comanda potrivita
-                        //  voi cauta daca filmul
+                        //  now that I'm on the right order
+                        // I'll look for the movie
                         String title = input.getCommands().get(i).getTitle();
-                        //  se afla la actorul primit
+                        //  is with the received actor
                         int nrActors = input.getActors().size();
                         for (int j = 0; j < nrActors; j++) {
                             String actor = input.getActors().get(j).getName();
                             if (actor != null) {
                                 if (actor.compareTo(name) == 0) {
-                                    //  daca gasesc actorul potrivit
-                                    //  ma voi uita daca am si titlul potrivit
+                                    //  if I find the right actor
+                                    // I'll see if I have the right title
                                     int nrFilm =
                                             input.getActors().get(j).getFilmography().size();
                                     for (int k = 0; k < nrFilm; k++) {
@@ -367,7 +367,7 @@ public class QueryMain {
                                         if (filmography != null) {
                                             if (title != null) {
                                                 if (filmography.compareTo(title) == 0) {
-                                                    //  daca gasesc il numar
+                                                    //  if I find I will count it
                                                     nrFilme++;
                                                     medie += grade;
                                                 }
@@ -388,10 +388,10 @@ public class QueryMain {
     }
 
     /**
-     * Functia pentru care se implementeaza comanda query users, in functie
-     * de numarul de rating-uri pe care un user le-a oferit
-     * @param indexAction id actiune
-     * @param arrayResult JSON ARRAY unde pun obiectele
+     * The function for which the query users command is implemented, depending
+     * the number of ratings a user has given
+     * @param indexAction action id
+     * @param arrayResult JSON ARRAY
      */
     public void criteriaUsersNumRatings(final int indexAction,
                                         final JSONArray arrayResult) {
@@ -399,7 +399,7 @@ public class QueryMain {
         int number = input.getCommands().get(indexAction).getNumber();
         String sortType = input.getCommands().get(indexAction).getSortType();
 
-        //  trebuie sa trec prin toate comenzile
+        //  I will get through all the commands
         int nrComenzi = input.getCommands().size();
         Map<String, Integer> map = new HashMap<>();
         for (int i = 0; i < nrComenzi; i++) {
@@ -419,13 +419,13 @@ public class QueryMain {
             if (actiontype.compareTo(Constants.COMMAND) == 0 && type.compareTo(
                     Constants.RATING) == 0) {
                 boolean eroare = true;
-                //  daca am dat rating, voi crea un map intre user si nr de
-                //  rating-uri
+                //  if I gave a rating, I will create a map between user and no
+                // ratings
                 String movie = input.getCommands().get(i).getTitle();
                 if (movie == null) {
                     continue;
                 }
-                //  trec prin toti userii ca sa imi iau history de la el
+                //  I go through all the users to get my history from it
                 int sizeUser = input.getUsers().size();
                 Map<String, Integer> history = null;
                 for (int j = 0; j < sizeUser; j++) {
@@ -454,7 +454,7 @@ public class QueryMain {
                 }
             }
         }
-        // in cele 2 liste voi pune key si value din map-ul de mai sus
+        // in the 2 lists I will put key and value from the map above
         ArrayList<String> listKey = new ArrayList<>();
         ArrayList<Integer> listValue = new ArrayList<>();
         Map<String, QueCompareList> newMap = new HashMap<>();
@@ -466,13 +466,13 @@ public class QueryMain {
             listValue.add(value);
         }
 
-        // fac atatea obiecte cate elemente am in map, pentru a le sorta
+        // I make as many objects as I have in the map to sort them
         for (int i = 0; i < listKey.size(); i++) {
             compareList[i] = new QueCompareList(listKey.get(i), listValue.get(i));
             newMap.put(compareList[i].getName(), compareList[i]);
         }
 
-        // sortez lista de obiecte pe care o am, cu ajutorul lui compareTo
+        // I sort the list of objects I have, with the help of compareTo
         List<QueCompareList> list = new ArrayList<>(newMap.values());
         Collections.sort(list);
 
@@ -494,10 +494,10 @@ public class QueryMain {
     }
 
     /**
-     * Functia aplica filtrele cerute de comanda, si returneaza o lista cu
-     * filmele ce respecta acest lucru
-     * @param indexAction id actiune
-     * @return o lista cu filme ce respecta criteriile cerute
+     * The function applies the required command filters, and returns a list of
+     * movies that respect this
+     * @param indexAction action id
+     * @return a list of movies that meet the required criteria
      */
     public ArrayList<String> returnQueryMoviesList(final int indexAction) {
         ArrayList<String> seriesToRecommend = new ArrayList<>();
@@ -530,10 +530,10 @@ public class QueryMain {
     }
 
     /**
-     * Intoarce o lista cu serialele ce respecta conditile din filters din
-     * fiecare comanda
-     * @param indexAction id actiune
-     * @return lista seriale
+     * Returns a list of series that comply with the conditions in the filters in
+     * each order
+     * @param indexAction action id
+     * @return list series
      */
     public ArrayList<String> returnQueryShowsList(final int indexAction) {
         ArrayList<String> seriesToRecommend = new ArrayList<>();
@@ -566,8 +566,8 @@ public class QueryMain {
     }
 
     /**
-     * Functia se uita la tipul criteriei, si in functie de aceasta
-     * va face un obiect specific
+     * The function looks at the type of criterion, and according to it
+     * will make a specific object
      * @param seriesToRecommend serialele recomandata
      * @param criteria tipul sortarii, crescatoare / descrescatoare
      * @return
@@ -601,8 +601,8 @@ public class QueryMain {
     }
 
     /**
-     * @return intoarce lista de actori, pentru a fi folosita pentru a calcula
-     * media premiilor lor
+     * @return returns the list of actors to be used to calculate
+     * the average of their prizes
      */
     public ArrayList<String> getAverageActors() {
         ArrayList<String> listActors = new ArrayList<>();
@@ -616,7 +616,7 @@ public class QueryMain {
 
     /**
      *
-     * @return intoarce lista de filme pe care input le are
+     * @return returns the list of movies that input has
      */
     public ArrayList<String> getListMovies() {
         ArrayList<String> listMovies = new ArrayList<>();
@@ -629,14 +629,14 @@ public class QueryMain {
     }
 
     /**
-     * Verific daca un anumit gen de filme exista
-     * @param genre tipul filmului
-     * @param genreFromUser genul filmul de la utilizator
+     * I check if a certain kind of movie exists
+     * @param genre movie type
+     * @param genreFromUser kind of user movie
      * @return
      */
     public boolean checkGenreExists(final List<String> genre,
                                     final String genreFromUser) {
-        // daca gasesc genreFromUser in Lista genre returnez true
+        // if I find genreFromUser in the Genre List I return true
         if (genre == null || genreFromUser == null) {
             return false;
         }
@@ -654,7 +654,7 @@ public class QueryMain {
 
     /**
      *
-     * @return intoarce lista de favorite a userilor
+     * @return returns the user favorites list
      */
     public ArrayList<String> getFavoriteList() {
         ArrayList<String> listFavoriteMovies = new ArrayList<>();
@@ -671,8 +671,8 @@ public class QueryMain {
     }
 
     /**
-     * Functia compara lista mea de favorite, cu cea din querry si intoarce
-     * o lista finala in functie daca ceva se repeta sau nu
+     * The function compares my favorite list with the querry list and returns
+     * a final list depending on whether something is repeated or not
      * @param favoriteList lista de filme favorite
      * @param queryList lista de querry
      * @return intorc o lista
